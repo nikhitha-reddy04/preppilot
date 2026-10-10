@@ -1,0 +1,79 @@
+@import "tailwindcss";
+
+/* Base styles without problematic @apply */
+body {
+  background-color: #020617;
+  color: #f8fafc;
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #020617;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #334155;
+}
+
+/* Utility for hiding scrollbar where needed */
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-none {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Print Media Styles: Generates clean, multi-page 50-Questions PDF */
+@media print {
+  @page {
+    margin: 1.5cm;
+    size: A4 portrait;
+  }
+
+  body {
+    background-color: #ffffff !important;
+    color: #000000 !important;
+    overflow: visible !important;
+    font-size: 11pt;
+  }
+
+  /* Hide app navigation, buttons, modals & screen drawer */
+  header, 
+  nav, 
+  button, 
+  .no-print {
+    display: none !important;
+  }
+
+  /* Keep question cards neatly grouped without breaking mid-sentence */
+  .break-inside-avoid {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+
+  /* Make sure text colors are black/dark-gray for crisp ink printing */
+  .text-slate-100,
+  .text-slate-200,
+  .text-slate-300,
+  .text-slate-400 {
+    color: #111827 !important;
+  }
+
+  .border-slate-800 {
+    border-color: #e5e7eb !important;
+  }
+}
